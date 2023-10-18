@@ -1,18 +1,26 @@
 <script setup lang="ts">
 //import Todoform from "./components/TodoForm/TodoForm.vue";
 //import TodoListItem from "./components/TodoListItem";
-
-
  
+import { ref } from "vue";
+import TodoForm from './components/TodoForm/TodoForm.vue';
+import TodoListItem from './components/TodoListItem/TodoListItem.vue';
+
+const todoList = [
+   { text: "bring food" },
+   { text: "save money" },
+
+]
 </script>
 
 
 
 <template>
-  <div id="app">
-    <h1>TODO</h1>
-     <Todoform @onNewTodo="handleNewTodo" />
 
+<div id="app">
+    <h1>TODO</h1>
+     <TodoForm @onNewTodo="handleNewTodo" />
+       
      <div>
       <TodoListItem v-for="todo in todoList" :key="todo.id" :todo="todo" />
      </div>

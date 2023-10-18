@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div className="form-input">
      <input type="checkbox" :value="todo.isChecked">
      <span>
        <strong>{{todo.title}}</strong> 

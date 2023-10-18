@@ -1,8 +1,8 @@
 <template>
-   <form @submit="submit"> 
+   <form @submit="submit" className="form"> 
     <input  required placeholder="title" v-model="title"  />
     <input required placeholder="description" v-model="description"  />
-    <button type="submit"></button>
+    <button className="btn" type="submit"></button>
    </form>
 
 </template>
