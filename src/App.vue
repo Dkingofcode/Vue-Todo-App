@@ -2,15 +2,23 @@
 //import Todoform from "./components/TodoForm/TodoForm.vue";
 //import TodoListItem from "./components/TodoListItem";
  
-import { ref } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import TodoForm from './components/TodoForm/TodoForm.vue';
 import TodoListItem from './components/TodoListItem/TodoListItem.vue';
 
 const todoList = [
-   { text: "bring food" },
-   { text: "save money" },
-
+  //  { text: "bring food" },
+  //  { text: "save money" },
 ]
+
+const name = ref('');
+
+const input_content = ref('');
+const input_category = ref(null);
+
+const todos_asc = computed(() => todos.value.sort((a, b) => {
+  return a.createdAt - b.createdAt
+}))
 </script>
 
 
@@ -18,9 +26,11 @@ const todoList = [
 <template>
 
 <div id="app">
-    <h1>TODO</h1>
+    <h1 className="heading">TODO</h1>
+    <div>
      <TodoForm @onNewTodo="handleNewTodo" />
-       
+     </div>  
+
      <div>
       <TodoListItem v-for="todo in todoList" :key="todo.id" :todo="todo" />
      </div>
@@ -29,32 +39,32 @@ const todoList = [
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+#app{
+  border: 5px solid;
+  margin: 0 auto;
+  margin-left: 90px;
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  width: 200px;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.heading{
+  text-align: center;
 }
+
+
+
 </style>
 
 
